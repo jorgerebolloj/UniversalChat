@@ -26,21 +26,20 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LIT-vB-8N1">
                                 <rect key="frame" x="20" y="302" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Opx-p6-eEO">
                                 <rect key="frame" x="20" y="340" width="560" height="30"/>
                                 <state key="normal" title="Sign In"/>
                                 <connections>
-                                    <action selector="didTapSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YeA-H5-M1h"/>
-                                    <action selector="loginDidTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LO4-Ov-dUG"/>
+                                    <action selector="didTapSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qyi-Du-844"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jr8-qb-0MH">
                                 <rect key="frame" x="20" y="378" width="560" height="30"/>
                                 <state key="normal" title="Forgot Password?"/>
                                 <connections>
-                                    <action selector="didRequestPasswordReset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gd4-Yc-wJU"/>
+                                    <action selector="didRequestPasswordReset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ROv-hc-Bwi"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Dt-8A-flj">
@@ -50,37 +49,37 @@
                                 <rect key="frame" x="20" y="416" width="560" height="30"/>
                                 <state key="normal" title="Create Account"/>
                                 <connections>
-                                    <action selector="didTapSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Phf-4Q-W0V"/>
+                                    <action selector="didTapSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SrB-jZ-peY"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Za7-kn-Xhc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Aia-Cs-pv0"/>
-                            <constraint firstItem="8Dt-8A-flj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ERb-y6-AJj"/>
-                            <constraint firstItem="Opx-p6-eEO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="EY6-P9-JIq"/>
-                            <constraint firstItem="jr8-qb-0MH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="FVd-mT-wox"/>
-                            <constraint firstItem="yTi-Vv-8Ys" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="M1C-hf-HCy"/>
-                            <constraint firstItem="Opx-p6-eEO" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="NwL-uP-eK9"/>
-                            <constraint firstItem="Za7-kn-Xhc" firstAttribute="top" secondItem="jr8-qb-0MH" secondAttribute="bottom" constant="8" id="Pf6-yr-YWE"/>
-                            <constraint firstItem="8Dt-8A-flj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="PkK-NI-G3G"/>
-                            <constraint firstItem="8Dt-8A-flj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-140" id="SI2-Lf-imv"/>
-                            <constraint firstItem="jr8-qb-0MH" firstAttribute="top" secondItem="Opx-p6-eEO" secondAttribute="bottom" constant="8" id="Tjz-9n-OWO"/>
-                            <constraint firstItem="8Dt-8A-flj" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="VpY-3v-EMZ"/>
-                            <constraint firstItem="Opx-p6-eEO" firstAttribute="top" secondItem="LIT-vB-8N1" secondAttribute="bottom" constant="8" id="bcj-fc-xai"/>
-                            <constraint firstItem="Za7-kn-Xhc" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="jH5-yN-HSh"/>
-                            <constraint firstItem="LIT-vB-8N1" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="jkk-Ja-Bfj"/>
-                            <constraint firstItem="yTi-Vv-8Ys" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="jmX-BU-YrK"/>
-                            <constraint firstItem="jr8-qb-0MH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="mXm-Fz-eLy"/>
-                            <constraint firstItem="LIT-vB-8N1" firstAttribute="top" secondItem="yTi-Vv-8Ys" secondAttribute="bottom" constant="8" id="uhA-rt-APA"/>
-                            <constraint firstItem="yTi-Vv-8Ys" firstAttribute="top" secondItem="8Dt-8A-flj" secondAttribute="bottom" constant="8" id="vxa-2y-10p"/>
-                            <constraint firstItem="LIT-vB-8N1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zCs-St-Kep"/>
+                            <constraint firstItem="8Dt-8A-flj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="0Bx-eE-cAm"/>
+                            <constraint firstItem="LIT-vB-8N1" firstAttribute="top" secondItem="yTi-Vv-8Ys" secondAttribute="bottom" constant="8" id="352-1Z-z8R"/>
+                            <constraint firstItem="Za7-kn-Xhc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5WU-JA-h0V"/>
+                            <constraint firstItem="Za7-kn-Xhc" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="9Yq-PP-WXV"/>
+                            <constraint firstItem="8Dt-8A-flj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-140" id="F1u-8U-Bgk"/>
+                            <constraint firstItem="LIT-vB-8N1" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Gnj-JQ-2gG"/>
+                            <constraint firstItem="Opx-p6-eEO" firstAttribute="top" secondItem="LIT-vB-8N1" secondAttribute="bottom" constant="8" id="HJB-nl-sXn"/>
+                            <constraint firstItem="Za7-kn-Xhc" firstAttribute="top" secondItem="jr8-qb-0MH" secondAttribute="bottom" constant="8" id="MYT-0x-h1H"/>
+                            <constraint firstItem="yTi-Vv-8Ys" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="OFn-04-OQb"/>
+                            <constraint firstItem="jr8-qb-0MH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Tq8-wd-AWf"/>
+                            <constraint firstItem="8Dt-8A-flj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="cJc-Vo-YrY"/>
+                            <constraint firstItem="yTi-Vv-8Ys" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="e7x-7I-8z9"/>
+                            <constraint firstItem="8Dt-8A-flj" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="f7j-5I-agx"/>
+                            <constraint firstItem="jr8-qb-0MH" firstAttribute="top" secondItem="Opx-p6-eEO" secondAttribute="bottom" constant="8" id="lWy-gl-9DU"/>
+                            <constraint firstItem="Opx-p6-eEO" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="qhH-Gr-ICo"/>
+                            <constraint firstItem="Opx-p6-eEO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="r53-47-pUc"/>
+                            <constraint firstItem="jr8-qb-0MH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="uyn-JB-SDY"/>
+                            <constraint firstItem="yTi-Vv-8Ys" firstAttribute="top" secondItem="8Dt-8A-flj" secondAttribute="bottom" constant="8" id="v24-qH-p0w"/>
+                            <constraint firstItem="LIT-vB-8N1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zdT-Qq-5VY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome" id="Qs3-LC-eu4"/>
                     <connections>
-                        <outlet property="emailField" destination="yTi-Vv-8Ys" id="jl2-ws-4BP"/>
-                        <outlet property="passwordField" destination="LIT-vB-8N1" id="fZ1-kB-G1c"/>
+                        <outlet property="emailTextField" destination="yTi-Vv-8Ys" id="b37-YC-7t3"/>
+                        <outlet property="passwordTextField" destination="LIT-vB-8N1" id="BkA-Tn-O7j"/>
                         <segue destination="KDD-tr-K3g" kind="show" identifier="SignInToCL" id="74N-2R-JzE"/>
                     </connections>
                 </viewController>
@@ -88,10 +87,10 @@
             </objects>
             <point key="canvasLocation" x="1004" y="937"/>
         </scene>
-        <!--FPViewController-->
+        <!--Table View Controller-->
         <scene sceneID="xmk-kY-q5R">
             <objects>
-                <tableViewController storyboardIdentifier="ChatViewController" title="FPViewController" id="KDD-tr-K3g" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ChatViewController" id="KDD-tr-K3g" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="NMy-iB-Q6Q">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -156,7 +155,7 @@
                     <toolbarItems>
                         <barButtonItem title="Choose Partner" id="SOm-3X-4CV">
                             <connections>
-                                <segue destination="hhp-Ji-Nqd" kind="show" id="y6X-wp-sa5"/>
+                                <segue destination="hhp-Ji-Nqd" kind="show" identifier="ChoosePartner" id="y6X-wp-sa5"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem title="Logout" id="MXD-X8-GYu"/>

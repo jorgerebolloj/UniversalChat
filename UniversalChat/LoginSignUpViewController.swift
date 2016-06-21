@@ -10,12 +10,16 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-@objc(SignInViewController)
-class LoginSignUpViewController: UIViewController {
+class LoginSignUpViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        emailTextField.delegate = self;
+        passwordTextField.delegate = self;
+    }
     
     override func viewDidAppear(animated: Bool) {
         if let user = FIRAuth.auth()?.currentUser {
@@ -23,21 +27,26 @@ class LoginSignUpViewController: UIViewController {
         }
     }
     
-    @IBAction func didTapSignIn(sender: AnyObject) {
+    @IBAction func didTapSignIn(sender: AnyObject!) {
         // Sign In with credentials.
-        let email = emailField.text
-        let password = passwordField.text
+        let email = emailTextField.text
+        let password = passwordTextField.text
         FIRAuth.auth()?.signInWithEmail(email!, password: password!) { (user, error) in
             if let error = error {
                 print(error.localizedDescription)
+                self.emailTextField.text = ""
+                self.passwordTextField.text = ""
+                self.emailTextField.resignFirstResponder()
+                self.passwordTextField.resignFirstResponder()
                 return
             }
             self.signedIn(user!)
         }
     }
-    @IBAction func didTapSignUp(sender: AnyObject) {
-        let email = emailField.text
-        let password = passwordField.text
+    
+    @IBAction func didTapSignUp(sender: AnyObject!) {
+        let email = emailTextField.text
+        let password = passwordTextField.text
         FIRAuth.auth()?.createUserWithEmail(email!, password: password!) { (user, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -59,7 +68,7 @@ class LoginSignUpViewController: UIViewController {
         }
     }
     
-    @IBAction func didRequestPasswordReset(sender: AnyObject) {
+    @IBAction func didRequestPasswordReset(sender: AnyObject!) {
         let prompt = UIAlertController.init(title: nil, message: "Email:", preferredStyle: UIAlertControllerStyle.Alert)
         let okAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.Default) { (action) in
             let userInput = prompt.textFields![0].text
@@ -86,6 +95,39 @@ class LoginSignUpViewController: UIViewController {
         AppState.sharedInstance.signedIn = true
         NSNotificationCenter.defaultCenter().postNotificationName(Constants.NotificationKeys.SignedIn, object: nil, userInfo: nil)
         performSegueWithIdentifier(Constants.Segues.SignInToCl, sender: nil)
+    }
+    
+    // UITextField Delegates
+    func textFieldDidBeginEditing(textField: UITextField) {
+        print("TextField did begin editing method called")
+    }
+    func textFieldDidEndEditing(textField: UITextField) {
+        print("TextField did end editing method called")
+    }
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        print("TextField should begin editing method called")
+        return true;
+    }
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        print("TextField should clear method called")
+        return true;
+    }
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        print("TextField should snd editing method called")
+        return true;
+    }
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        print("While entering the characters this method gets called")
+        return true;
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        print("TextField should return method called")
+        if (emailTextField.isFirstResponder()) {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            passwordTextField.resignFirstResponder()
+        }
+        return true;
     }
 
 }

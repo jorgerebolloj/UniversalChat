@@ -69,6 +69,7 @@ DEPENDENCIES:
   - Firebase
   - Firebase/AdMob
   - Firebase/Auth
+  - Firebase/Core
   - Firebase/Crash
   - Firebase/Database
   - Firebase/RemoteConfig
