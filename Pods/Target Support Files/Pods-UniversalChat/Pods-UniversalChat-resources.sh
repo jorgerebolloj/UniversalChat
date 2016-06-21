@@ -59,17 +59,9 @@ install_resource()
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "Batch/Batch.embeddedframework/Batch.bundle"
-  install_resource "FirebaseUI/FirebaseUIFrameworks/Auth/Resources/FirebaseAuthUIBundle.bundle"
-  install_resource "FirebaseUI/FirebaseUIFrameworks/Facebook/Resources/FirebaseFacebookAuthUIBundle.bundle"
-  install_resource "FirebaseUI/FirebaseUIFrameworks/Google/Resources/FirebaseGoogleAuthUIBundle.bundle"
-  install_resource "GoogleSignIn/Resources/GoogleSignIn.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "Batch/Batch.embeddedframework/Batch.bundle"
-  install_resource "FirebaseUI/FirebaseUIFrameworks/Auth/Resources/FirebaseAuthUIBundle.bundle"
-  install_resource "FirebaseUI/FirebaseUIFrameworks/Facebook/Resources/FirebaseFacebookAuthUIBundle.bundle"
-  install_resource "FirebaseUI/FirebaseUIFrameworks/Google/Resources/FirebaseGoogleAuthUIBundle.bundle"
-  install_resource "GoogleSignIn/Resources/GoogleSignIn.bundle"
 fi
 
 mkdir -p "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

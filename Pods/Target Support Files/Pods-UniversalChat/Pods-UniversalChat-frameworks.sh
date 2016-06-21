@@ -82,14 +82,3 @@ strip_invalid_archs() {
   fi
 }
 
-
-if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-UniversalChat/Bolts.framework"
-  install_framework "Pods-UniversalChat/FBSDKCoreKit.framework"
-  install_framework "Pods-UniversalChat/FBSDKLoginKit.framework"
-fi
-if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-UniversalChat/Bolts.framework"
-  install_framework "Pods-UniversalChat/FBSDKCoreKit.framework"
-  install_framework "Pods-UniversalChat/FBSDKLoginKit.framework"
-fi

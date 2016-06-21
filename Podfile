@@ -7,7 +7,12 @@ target 'UniversalChat' do
 
 	pod 'Firebase'
     pod 'Batch', '~> 1.5'
-    pod 'FirebaseUI', '~> 0.4'
+    pod 'Firebase/Storage'
+    pod 'Firebase/AdMob'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Crash'
+    pod 'Firebase/Database'
+    pod 'Firebase/RemoteConfig'
 
 end
 
