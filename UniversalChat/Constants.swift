@@ -15,20 +15,25 @@
 //
 
 struct Constants {
-
-  struct NotificationKeys {
-    static let SignedIn = "onSignInCompleted"
-  }
-
-  struct Segues {
-    static let SignInToCl = "SignInToCL"
-    static let FpToSignIn = "FPToSignIn"
-  }
-
-  struct MessageFields {
-    static let name = "name"
-    static let text = "text"
-    static let photoUrl = "photoUrl"
-    static let imageUrl = "imageUrl"
-  }
+    struct NotificationKeys {
+        static let SignedIn = "onSignInCompleted"
+    }
+    struct Segues {
+        static let SignInToChatRooms = "SignInToChatRooms"
+        static let FpToSignIn = "FPToSignIn"
+    }
+    
+    struct ChatRoomsFields {
+        static let name = "name"
+        static let text = "text"
+        static let photoUrl = "photoUrl"
+        static let imageUrl = "imageUrl"
+    }
+    
+    struct MessageFields {
+        static let name = "name"
+        static let text = "text"
+        static let photoUrl = "photoUrl"
+        static let imageUrl = "imageUrl"
+    }
 }

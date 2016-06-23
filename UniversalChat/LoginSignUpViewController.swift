@@ -94,7 +94,7 @@ class LoginSignUpViewController: UIViewController, UITextFieldDelegate {
         AppState.sharedInstance.photoUrl = user?.photoURL
         AppState.sharedInstance.signedIn = true
         NSNotificationCenter.defaultCenter().postNotificationName(Constants.NotificationKeys.SignedIn, object: nil, userInfo: nil)
-        performSegueWithIdentifier(Constants.Segues.SignInToCl, sender: nil)
+        performSegueWithIdentifier(Constants.Segues.SignInToChatRooms, sender: nil)
     }
     
     // UITextField Delegates

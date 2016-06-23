@@ -15,6 +15,8 @@
 		3083B6301D131222006CE632 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3083B62F1D131222006CE632 /* Assets.xcassets */; };
 		3083B6331D131222006CE632 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3083B6311D131222006CE632 /* LaunchScreen.storyboard */; };
 		3083B63B1D131538006CE632 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3083B63A1D131538006CE632 /* GoogleService-Info.plist */; };
+		309B9D851D1A02E20038E1E8 /* OverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309B9D841D1A02E20038E1E8 /* OverviewTableViewController.swift */; };
+		309B9D871D1B288E0038E1E8 /* ChooseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309B9D861D1B288E0038E1E8 /* ChooseTableViewController.swift */; };
 		30BA89831D146D370092F8AF /* LoginSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA89821D146D370092F8AF /* LoginSignUpViewController.swift */; };
 		30BA89EA1D1480000092F8AF /* JSQMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 30BA898B1D1480000092F8AF /* JSQMessagesAssets.bundle */; };
 		30BA89EB1D1480000092F8AF /* NSBundle+JSQMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BA898E1D1480000092F8AF /* NSBundle+JSQMessages.m */; };
@@ -61,7 +63,6 @@
 		30BA8A141D1480000092F8AF /* JSQMessagesTypingIndicatorFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30BA89E71D1480000092F8AF /* JSQMessagesTypingIndicatorFooterView.xib */; };
 		30BA8A151D1480000092F8AF /* JSQMessagesTypingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BA89E91D1480000092F8AF /* JSQMessagesTypingView.m */; };
 		30BA8A181D1480260092F8AF /* JSQSystemSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BA8A171D1480260092F8AF /* JSQSystemSoundPlayer.m */; };
-		30BA8A1A1D1481AF0092F8AF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA8A191D1481AF0092F8AF /* ChatViewController.swift */; };
 		30BA8A1C1D1482E80092F8AF /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BA8A1B1D1482E80092F8AF /* Accounts.framework */; };
 		30BA8A1E1D1482F30092F8AF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BA8A1D1D1482F30092F8AF /* Social.framework */; };
 		DAEB2A088E83E4D29A3C566B /* Pods_UniversalChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC51C5DD4BC9223911F080E4 /* Pods_UniversalChat.framework */; };
@@ -78,6 +79,8 @@
 		3083B6321D131222006CE632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3083B6341D131222006CE632 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3083B63A1D131538006CE632 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		309B9D841D1A02E20038E1E8 /* OverviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewTableViewController.swift; sourceTree = "<group>"; };
+		309B9D861D1B288E0038E1E8 /* ChooseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTableViewController.swift; sourceTree = "<group>"; };
 		30BA89821D146D370092F8AF /* LoginSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSignUpViewController.swift; sourceTree = "<group>"; };
 		30BA89841D147CA20092F8AF /* UniversalChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UniversalChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		30BA898B1D1480000092F8AF /* JSQMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JSQMessagesAssets.bundle; sourceTree = "<group>"; };
@@ -171,7 +174,6 @@
 		30BA89E91D1480000092F8AF /* JSQMessagesTypingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQMessagesTypingView.m; sourceTree = "<group>"; };
 		30BA8A161D1480260092F8AF /* JSQSystemSoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQSystemSoundPlayer.h; sourceTree = "<group>"; };
 		30BA8A171D1480260092F8AF /* JSQSystemSoundPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQSystemSoundPlayer.m; sourceTree = "<group>"; };
-		30BA8A191D1481AF0092F8AF /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		30BA8A1B1D1482E80092F8AF /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		30BA8A1D1D1482F30092F8AF /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		43A60CE5D00F726C546D2E90 /* Pods-UniversalChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniversalChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-UniversalChat/Pods-UniversalChat.release.xcconfig"; sourceTree = "<group>"; };
@@ -217,7 +219,8 @@
 				30BA89881D147FB50092F8AF /* Helper */,
 				3083B6281D131222006CE632 /* AppDelegate.swift */,
 				30BA89821D146D370092F8AF /* LoginSignUpViewController.swift */,
-				30BA8A191D1481AF0092F8AF /* ChatViewController.swift */,
+				309B9D841D1A02E20038E1E8 /* OverviewTableViewController.swift */,
+				309B9D861D1B288E0038E1E8 /* ChooseTableViewController.swift */,
 				304498871D19DDC7008AD163 /* MeasurementHelper.swift */,
 				304498891D19DDD4008AD163 /* AppState.swift */,
 				3044988A1D19DDD4008AD163 /* Constants.swift */,
@@ -425,6 +428,7 @@
 				3083B6231D131222006CE632 /* Resources */,
 				CB72DEFB231C5FD7940C499A /* Embed Pods Frameworks */,
 				0EADF253BE97293AB5518BEB /* Copy Pods Resources */,
+				309B9D8A1D1B7DC10038E1E8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -520,6 +524,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UniversalChat/Pods-UniversalChat-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		309B9D8A1D1B7DC10038E1E8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Replace this path with the path to the key you just downloaded\nJSON_FILE=/Users/jorgerebolloj/Repos/UniversalChat/UniversalChat/ServiceAccount.json\n\n# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:1027503310689:ios:c7500b30121e75fc\n\ndefaults write com.google.SymbolUpload version -integer 1   # creates file if it does not exist\nJSON=$(cat \"${JSON_FILE}\")\n/usr/bin/plutil -replace \"app_${GOOGLE_APP_ID//:/_}\" -json \"${JSON}\" \"$HOME/Library/Preferences/com.google.SymbolUpload.plist\"\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym";
+		};
 		CB72DEFB231C5FD7940C499A /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -556,6 +573,7 @@
 				30BA8A181D1480260092F8AF /* JSQSystemSoundPlayer.m in Sources */,
 				30BA89F21D1480000092F8AF /* JSQMessagesAvatarImageFactory.m in Sources */,
 				30BA8A091D1480000092F8AF /* JSQMessagesCollectionViewCellOutgoing.m in Sources */,
+				309B9D871D1B288E0038E1E8 /* ChooseTableViewController.swift in Sources */,
 				30BA8A051D1480000092F8AF /* JSQMessagesCollectionView.m in Sources */,
 				30BA8A101D1480000092F8AF /* JSQMessagesMediaPlaceholderView.m in Sources */,
 				30BA89F91D1480000092F8AF /* JSQMessagesCollectionViewFlowLayout.m in Sources */,
@@ -580,9 +598,9 @@
 				3044988C1D19DDD4008AD163 /* Constants.swift in Sources */,
 				30BA89EC1D1480000092F8AF /* NSString+JSQMessages.m in Sources */,
 				30BA89F71D1480000092F8AF /* JSQAudioMediaViewAttributes.m in Sources */,
+				309B9D851D1A02E20038E1E8 /* OverviewTableViewController.swift in Sources */,
 				30BA8A111D1480000092F8AF /* JSQMessagesToolbarContentView.m in Sources */,
 				3044988B1D19DDD4008AD163 /* AppState.swift in Sources */,
-				30BA8A1A1D1481AF0092F8AF /* ChatViewController.swift in Sources */,
 				30BA89F81D1480000092F8AF /* JSQMessagesBubblesSizeCalculator.m in Sources */,
 				30BA89EB1D1480000092F8AF /* NSBundle+JSQMessages.m in Sources */,
 				30BA8A151D1480000092F8AF /* JSQMessagesTypingView.m in Sources */,

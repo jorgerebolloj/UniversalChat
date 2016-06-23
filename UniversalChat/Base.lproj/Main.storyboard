@@ -80,23 +80,23 @@
                     <connections>
                         <outlet property="emailTextField" destination="yTi-Vv-8Ys" id="b37-YC-7t3"/>
                         <outlet property="passwordTextField" destination="LIT-vB-8N1" id="BkA-Tn-O7j"/>
-                        <segue destination="KDD-tr-K3g" kind="show" identifier="SignInToCL" id="74N-2R-JzE"/>
+                        <segue destination="KDD-tr-K3g" kind="show" identifier="SignInToChatRooms" id="74N-2R-JzE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1004" y="937"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Overview Table View Controller-->
         <scene sceneID="xmk-kY-q5R">
             <objects>
-                <tableViewController storyboardIdentifier="ChatViewController" id="KDD-tr-K3g" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="OverviewViewController" id="KDD-tr-K3g" customClass="OverviewTableViewController" customModule="UniversalChat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="NMy-iB-Q6Q">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="uhy-oK-7Tb">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="uhy-oK-7Tb">
                                 <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uhy-oK-7Tb" id="Le5-tt-ihF">
@@ -161,6 +161,9 @@
                         <barButtonItem title="Logout" id="MXD-X8-GYu"/>
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="choosePArterButton" destination="SOm-3X-4CV" id="aom-Nq-88o"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PqG-3Q-juS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -184,10 +187,10 @@
             </objects>
             <point key="canvasLocation" x="2415" y="937"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Choose Table View Controller-->
         <scene sceneID="8ar-o1-Uae">
             <objects>
-                <tableViewController id="hhp-Ji-Nqd" sceneMemberID="viewController">
+                <tableViewController id="hhp-Ji-Nqd" customClass="ChooseTableViewController" customModule="UniversalChat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fRA-UH-K6s">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -198,7 +201,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="kUU-ja-J2C">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatRoomCell" id="kUU-ja-J2C">
                                 <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kUU-ja-J2C" id="5lI-Ha-O3Z">
@@ -212,6 +215,9 @@
                             <outlet property="delegate" destination="hhp-Ji-Nqd" id="rgp-ZB-ZrX"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="searchBar" destination="gTF-3T-w6y" id="f8H-38-WDD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVk-Hq-29O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
