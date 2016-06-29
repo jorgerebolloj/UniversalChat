@@ -41,7 +41,6 @@ class ChooseTableViewController: UITableViewController, UISearchBarDelegate {
         configureRemoteConfig()
         fetchConfig()
         logViewLoaded()
-        //createModelData()
         
         /*let postRef = self.ref.child("posts")
         let post1 = ["author": "gracehop", "title": "Announcing COBOL, a New Programming Language"]
@@ -115,6 +114,7 @@ class ChooseTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func createModelData() {
+        self.chatRoomsData.removeAll()
         //create Modeldata to filter
         for user in self.chatRooms {
             let userSnapshot: FIRDataSnapshot! = user
@@ -156,14 +156,11 @@ class ChooseTableViewController: UITableViewController, UISearchBarDelegate {
             searchInProgress = false
             tableView.reloadData()
         } else {
-            /*_refHandle = self.ref.child("chatrooms").queryOrderedByChild("fullName").queryEqualToValue("your full name").observeSingleEventOfType(.Value, withBlock: { (snapshot) -> Void in
-                    
-                    }*/
             print(" search text: \(searchBar.text! as NSString)")
             searchInProgress = true
+            createModelData()
             self.filteredChatRoomsData = self.chatRoomsData.filter{
                 let firstName = $0["name"]!!.lowercaseString
-                //return (firstName.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch).location) != NSNotFound
                 return firstName.rangeOfString(searchText.lowercaseString) != nil
             }
             print("filteredChatRoomsData: \(self.filteredChatRoomsData)")
@@ -171,66 +168,6 @@ class ChooseTableViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
-    /*func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        /*filteredChatRoomsData = chatRoomsData.filter ({ user in
-            return user.model.lowercaseString.containsString(searchText.lowercaseString)
-        })*/
-        if(filtered.count == 0){
-            searchInProgress = false;
-        } else {
-            searchInProgress = true;
-        }
-        self.tableView.reloadData()
-    }*/
-    
-    /*func filterContentForSearchText(searchText: String) {
-        // Filter the array using the filter method
-        self.filtered = self.data.filter({( $0 as! String == "Test"
-            let categoryMatch = (scope == "All") || (object.category == scope)
-            let stringMatch = object.name.rangeOfString(searchText)
-            return categoryMatch && (stringMatch != nil)
-        })
-    }*/
-    
-    /*func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        for userItem in chatRoomsDic {
-            let newUser = Dictionary <String,String>(dictionaryLiteral:(name:(userItem.objectForKey("name")) as! String, text:(userItem.objectForKey("text")) as! String))
-            self.data.append(newUser)
-            
-        }
-        filtered = data.filter({ $0["name"] as! NSString == String
-            let tmp: NSString = text as! NSString
-            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
-            return range.location != NSNotFound
-        })
-        if(filtered.count == 0){
-            searchInProgress = false;
-        } else {
-            searchInProgress = true;
-        }
-        self.tableView.reloadData()
-    }*/
-    
-    //func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        /*if (searchText != "") {
-            refHandle = self.ref.child("chatrooms").queryOrderedByChild("name").queryStartingAtValue(searchText).observeEventType(.ChildAdded, withBlock: { snapshot in
-                // Get user value
-                let username = snapshot.value!["username"] as! String
-                let user = User.init(username: username)
-                self.filtered.append(snapshot)
-                
-            }) { (error: NSError!) in
-                
-                print(error.localizedDescription)
-                
-                }/*
-                { snapshot in
-                print(snapshot.key)
-            })*/
-            searchString = searchText
-        }*/
-    //}
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -246,7 +183,7 @@ class ChooseTableViewController: UITableViewController, UISearchBarDelegate {
         if(searchInProgress) {
             return filteredChatRoomsData.count
         }
-        return chatRoomsData.count
+        return chatRooms.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -267,9 +204,9 @@ class ChooseTableViewController: UITableViewController, UISearchBarDelegate {
              */
             print("filteredUser data cell: \(filteredUser)")
         } else {
-            //let userSnapshot: FIRDataSnapshot! = self.chatRooms[indexPath.row]
-            //let user = userSnapshot.value as! Dictionary<String, String>
-            let user = chatRoomsData[indexPath.row] as! Dictionary<String, String>
+            let userSnapshot: FIRDataSnapshot! = self.chatRooms[indexPath.row]
+            let user = userSnapshot.value as! Dictionary<String, String>
+            //let user = chatRoomsData[indexPath.row] as! Dictionary<String, String>
             print("userSnapshot: \(user)")
             let name = user[Constants.ChatRoomsFields.name] as String!
             if let imageUrl = user[Constants.ChatRoomsFields.imageUrl] {
