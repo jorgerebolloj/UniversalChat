@@ -34,10 +34,10 @@ class LoginSignUpViewController: UIViewController, UITextFieldDelegate {
         FIRAuth.auth()?.signInWithEmail(email!, password: password!) { (user, error) in
             if let error = error {
                 print(error.localizedDescription)
-                self.emailTextField.text = ""
                 self.passwordTextField.text = ""
                 self.emailTextField.resignFirstResponder()
                 self.passwordTextField.resignFirstResponder()
+                self.signinErrorAlert("Error signing", message: "\(error.localizedDescription)")
                 return
             }
             self.signedIn(user!)
@@ -93,6 +93,7 @@ class LoginSignUpViewController: UIViewController, UITextFieldDelegate {
         AppState.sharedInstance.displayName = user?.displayName ?? user?.email
         AppState.sharedInstance.photoUrl = user?.photoURL
         AppState.sharedInstance.signedIn = true
+        self.passwordTextField.text = ""
         NSNotificationCenter.defaultCenter().postNotificationName(Constants.NotificationKeys.SignedIn, object: nil, userInfo: nil)
         performSegueWithIdentifier(Constants.Segues.SignInToChatRooms, sender: nil)
     }
@@ -128,6 +129,24 @@ class LoginSignUpViewController: UIViewController, UITextFieldDelegate {
             passwordTextField.resignFirstResponder()
         }
         return true;
+    }
+    
+    func signinErrorAlert(title: String, message: String) {
+        var text = ""
+        let messageUserDontExist = "There is no user record corresponding to this identifier. The user may have been deleted."
+        let messageUserWrongPass = "The password is invalid or the user does not have a password."
+        if (message == messageUserDontExist) {
+             text = "There is no user record corresponding to this identifier."
+            self.emailTextField.text = ""
+        } else if (message == messageUserWrongPass) {
+            text = "The password is invalid."
+        } else {
+            text = message
+        }
+        let alert = UIAlertController(title: title, message: text, preferredStyle: UIAlertControllerStyle.Alert)
+        let action = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+        alert.addAction(action)
+        presentViewController(alert, animated: true, completion: nil)
     }
 
 }
