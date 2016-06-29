@@ -20,7 +20,7 @@ struct Constants {
     }
     struct Segues {
         static let SignInToChatRooms = "SignInToChatRooms"
-        static let FpToSignIn = "FPToSignIn"
+        static let ChatRoomsoSignIn = "ChatRoomsToSignIn"
     }
     
     struct ChatRoomsFields {

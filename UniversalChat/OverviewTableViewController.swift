@@ -7,18 +7,35 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class OverviewTableViewController: UITableViewController {
 
     
     @IBOutlet weak var choosePArterButton: UIBarButtonItem!
+    @IBOutlet weak var logOutButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.setRightBarButtonItem(choosePArterButton, animated: false)
+        self.navigationItem.setLeftBarButtonItem(logOutButton, animated: false)
     }
 
+    @IBAction func logOut(sender: AnyObject) {
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+            AppState.sharedInstance.signedIn = false
+            self.navigationController?.popToRootViewControllerAnimated(true)
+            //performSegueWithIdentifier(Constants.Segues.ChatRoomsToSignIn, sender: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: \(signOutError)")
+        }
+        //self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

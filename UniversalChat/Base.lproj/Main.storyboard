@@ -158,11 +158,16 @@
                                 <segue destination="hhp-Ji-Nqd" kind="show" identifier="ChoosePartner" id="y6X-wp-sa5"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem title="Logout" id="MXD-X8-GYu"/>
+                        <barButtonItem title="Logout" id="MXD-X8-GYu">
+                            <connections>
+                                <action selector="logOut:" destination="KDD-tr-K3g" id="hZ2-T5-7gz"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="choosePArterButton" destination="SOm-3X-4CV" id="aom-Nq-88o"/>
+                        <outlet property="logOutButton" destination="MXD-X8-GYu" id="dBT-hO-pvW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PqG-3Q-juS" userLabel="First Responder" sceneMemberID="firstResponder"/>
