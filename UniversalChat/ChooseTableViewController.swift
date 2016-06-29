@@ -17,7 +17,9 @@ class ChooseTableViewController: UITableViewController, UISearchBarDelegate {
     var searchInProgress = false
     
     var ref: FIRDatabaseReference!
-    var chatrooms: [FIRDataSnapshot]! = []
+    var chatRooms: [FIRDataSnapshot]! = []
+    var chatRoomsData: [AnyObject] = []
+    var filteredChatRoomsData: [AnyObject] = []
     var msglength: NSNumber = 10
     private var _refHandle: FIRDatabaseHandle!
     
@@ -39,6 +41,16 @@ class ChooseTableViewController: UITableViewController, UISearchBarDelegate {
         configureRemoteConfig()
         fetchConfig()
         logViewLoaded()
+        //createModelData()
+        
+        /*let postRef = self.ref.child("posts")
+        let post1 = ["author": "gracehop", "title": "Announcing COBOL, a New Programming Language"]
+        let post1Ref = postRef.childByAutoId()
+        post1Ref.setValue(post1)
+        
+        let post2 = ["author": "alanisawesome", "title": "The Turing Machine"]
+        let post2Ref = postRef.childByAutoId()
+        post2Ref.setValue(post2)*/
     }
     
     deinit {
@@ -48,9 +60,11 @@ class ChooseTableViewController: UITableViewController, UISearchBarDelegate {
     func configureDatabase() {
         ref = FIRDatabase.database().reference()
         // Listen for new messages in the Firebase database
+        self.chatRooms.removeAll()
         _refHandle = self.ref.child("chatrooms").observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
-            self.chatrooms.append(snapshot)
-            self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.chatrooms.count-1, inSection: 0)], withRowAnimation: .Automatic)
+            self.chatRooms.append(snapshot)
+            print("\(self.chatRooms)")
+            self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.chatRooms.count-1, inSection: 0)], withRowAnimation: .Automatic)
         })
     }
     
@@ -100,12 +114,122 @@ class ChooseTableViewController: UITableViewController, UISearchBarDelegate {
         FIRCrashMessage("View loaded")
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        searchString = searchText
-        searchInProgress = true
-        //self.loadObjects()
-        searchInProgress = false
+    func createModelData() {
+        //create Modeldata to filter
+        for user in self.chatRooms {
+            let userSnapshot: FIRDataSnapshot! = user
+            let userData = userSnapshot.value as! Dictionary<String, String>
+            
+            let name = userData[Constants.ChatRoomsFields.name] as String!
+            let text = userData[Constants.ChatRoomsFields.text] as String!
+            let photoUrl = userData[Constants.ChatRoomsFields.photoUrl] as String!
+            let imageUrl = userData[Constants.ChatRoomsFields.imageUrl] as String!
+            
+            var dict = [String: String]()
+            dict["name"] = name
+            dict["text"] = text
+            dict["photoUrl"] = photoUrl
+            dict["imageUrl"] = imageUrl
+            self.chatRoomsData.append(dict)
+            print("Modeldata to filter: \(self.chatRoomsData)")
+        }
     }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchInProgress = true;
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchInProgress = false;
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchInProgress = false;
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchInProgress = false;
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
+        if searchBar.text!.isEmpty{
+            searchInProgress = false
+            tableView.reloadData()
+        } else {
+            /*_refHandle = self.ref.child("chatrooms").queryOrderedByChild("fullName").queryEqualToValue("your full name").observeSingleEventOfType(.Value, withBlock: { (snapshot) -> Void in
+                    
+                    }*/
+            print(" search text: \(searchBar.text! as NSString)")
+            searchInProgress = true
+            self.filteredChatRoomsData = self.chatRoomsData.filter{
+                let firstName = $0["name"]!!.lowercaseString
+                //return (firstName.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch).location) != NSNotFound
+                return firstName.rangeOfString(searchText.lowercaseString) != nil
+            }
+            print("filteredChatRoomsData: \(self.filteredChatRoomsData)")
+            tableView.reloadData()
+        }
+    }
+    
+    /*func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        /*filteredChatRoomsData = chatRoomsData.filter ({ user in
+            return user.model.lowercaseString.containsString(searchText.lowercaseString)
+        })*/
+        if(filtered.count == 0){
+            searchInProgress = false;
+        } else {
+            searchInProgress = true;
+        }
+        self.tableView.reloadData()
+    }*/
+    
+    /*func filterContentForSearchText(searchText: String) {
+        // Filter the array using the filter method
+        self.filtered = self.data.filter({( $0 as! String == "Test"
+            let categoryMatch = (scope == "All") || (object.category == scope)
+            let stringMatch = object.name.rangeOfString(searchText)
+            return categoryMatch && (stringMatch != nil)
+        })
+    }*/
+    
+    /*func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        for userItem in chatRoomsDic {
+            let newUser = Dictionary <String,String>(dictionaryLiteral:(name:(userItem.objectForKey("name")) as! String, text:(userItem.objectForKey("text")) as! String))
+            self.data.append(newUser)
+            
+        }
+        filtered = data.filter({ $0["name"] as! NSString == String
+            let tmp: NSString = text as! NSString
+            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            return range.location != NSNotFound
+        })
+        if(filtered.count == 0){
+            searchInProgress = false;
+        } else {
+            searchInProgress = true;
+        }
+        self.tableView.reloadData()
+    }*/
+    
+    //func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        /*if (searchText != "") {
+            refHandle = self.ref.child("chatrooms").queryOrderedByChild("name").queryStartingAtValue(searchText).observeEventType(.ChildAdded, withBlock: { snapshot in
+                // Get user value
+                let username = snapshot.value!["username"] as! String
+                let user = User.init(username: username)
+                self.filtered.append(snapshot)
+                
+            }) { (error: NSError!) in
+                
+                print(error.localizedDescription)
+                
+                }/*
+                { snapshot in
+                print(snapshot.key)
+            })*/
+            searchString = searchText
+        }*/
+    //}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -119,7 +243,10 @@ class ChooseTableViewController: UITableViewController, UISearchBarDelegate {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chatrooms.count
+        if(searchInProgress) {
+            return filteredChatRoomsData.count
+        }
+        return chatRoomsData.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -127,29 +254,46 @@ class ChooseTableViewController: UITableViewController, UISearchBarDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("chatRoomCell", forIndexPath: indexPath)
 
         // Unpack message from Firebase DataSnapshot
-        let messageSnapshot: FIRDataSnapshot! = self.chatrooms[indexPath.row]
-        let message = messageSnapshot.value as! Dictionary<String, String>
-        let name = message[Constants.ChatRoomsFields.name] as String!
-        if let imageUrl = message[Constants.ChatRoomsFields.imageUrl] {
-            if imageUrl.hasPrefix("gs://") {
-                FIRStorage.storage().referenceForURL(imageUrl).dataWithMaxSize(INT64_MAX){ (data, error) in
-                    if let error = error {
-                        print("Error downloading: \(error)")
-                        return
-                    }
-                    cell.imageView?.image = UIImage.init(data: data!)
-                }
-            } else if let url = NSURL(string:imageUrl), data = NSData(contentsOfURL: url) {
-                cell.imageView?.image = UIImage.init(data: data)
-            }
-            cell.textLabel?.text = "sent by: \(name)"
-        } else {
-            let text = message[Constants.ChatRoomsFields.text] as String!
-            cell.textLabel?.text = name + ": " + text
+        if (searchInProgress) {
+            let filteredUser = filteredChatRoomsData[indexPath.row] as! Dictionary<String, String>
+            let userName = filteredUser[Constants.ChatRoomsFields.name] as String!
+            let userText = filteredUser[Constants.ChatRoomsFields.text] as String!
+            cell.textLabel?.text = userName + ": " + userText
             cell.imageView?.image = UIImage(named: "ic_account_circle")
-            if let photoUrl = message[Constants.ChatRoomsFields.photoUrl], url = NSURL(string:photoUrl), data = NSData(contentsOfURL: url) {
-                cell.imageView?.image = UIImage(data: data)
+            /*
+             if let photoUrl = message[Constants.ChatRoomsFields.photoUrl], url = NSURL(string:photoUrl), data = NSData(contentsOfURL: url) {
+             cell.imageView?.image = UIImage(data: data)
+             }
+             */
+            print("filteredUser data cell: \(filteredUser)")
+        } else {
+            //let userSnapshot: FIRDataSnapshot! = self.chatRooms[indexPath.row]
+            //let user = userSnapshot.value as! Dictionary<String, String>
+            let user = chatRoomsData[indexPath.row] as! Dictionary<String, String>
+            print("userSnapshot: \(user)")
+            let name = user[Constants.ChatRoomsFields.name] as String!
+            if let imageUrl = user[Constants.ChatRoomsFields.imageUrl] {
+                if imageUrl.hasPrefix("gs://") {
+                    FIRStorage.storage().referenceForURL(imageUrl).dataWithMaxSize(INT64_MAX){ (data, error) in
+                        if let error = error {
+                            print("Error downloading: \(error)")
+                            return
+                        }
+                        cell.imageView?.image = UIImage.init(data: data!)
+                    }
+                } else if let url = NSURL(string:imageUrl), data = NSData(contentsOfURL: url) {
+                    cell.imageView?.image = UIImage.init(data: data)
+                }
+                cell.textLabel?.text = "sent by: \(name)"
+            } else {
+                let text = user[Constants.ChatRoomsFields.text] as String!
+                cell.textLabel?.text = name + ": " + text
+                cell.imageView?.image = UIImage(named: "ic_account_circle")
+                if let photoUrl = user[Constants.ChatRoomsFields.photoUrl], url = NSURL(string:photoUrl), data = NSData(contentsOfURL: url) {
+                    cell.imageView?.image = UIImage(data: data)
+                }
             }
+            print("user data cell: \(user)")
         }
 
         return cell
